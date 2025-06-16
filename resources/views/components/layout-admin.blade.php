@@ -49,7 +49,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/riwayat-transaksi" aria-expanded="false">
+                            <a class="sidebar-link" href="/transaksi/riwayat" aria-expanded="false">
                                 <span><i class="ti ti-history"></i></span>
                                 <span class="hide-menu">Riwayat Transaksi</span>
                             </a>
@@ -68,7 +68,7 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/kategori-sampah" aria-expanded="false">
-                                <span><i class="ti ti-trash"></i></span>
+                                <span><i class="ti ti-category"></i></span>
                                 <span class="hide-menu">Kategori Sampah</span>
                             </a>
                         </li>

@@ -7,38 +7,44 @@
             </div>
             <div class="mt-3 mt-md-4">
                 <a href="{{ route('jenis-sampah.create') }}" class="btn btn-primary mb-3">Tambah Jenis</a>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Kategori</th>
-                                <th>Nama</th>
-                                <th>Deskripsi</th>
-                                <th>Harga/Kg</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($jenis as $item)
-                                <tr>
-                                    <td>{{ $item->kategori->nama }}</td>
-                                    <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->deskripsi }}</td>
-                                    <td>Rp {{ number_format($item->harga_per_kg, 0, ',', '.') }}</td>
-                                    <td>
-                                        <a href="{{ route('jenis-sampah.edit', $item) }}"
-                                            class="btn btn-sm btn-warning">Edit</a>
-                                        <form action="{{ route('jenis-sampah.destroy', $item) }}" method="POST"
-                                            style="display:inline;">
-                                            @csrf @method('DELETE')
-                                            <button class="btn btn-sm btn-danger">Hapus</button>
-                                        </form>
-                                    </td>
+                @if ($jenis->isEmpty())
+                    <div class="alert alert-warning mb-0" role="alert">
+                        <p class="card-text mb-0">Belum ada data jenis sampah yang ditambahkan.</p>
+                    </div>
+                @else
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr class="table-dark border-0">
+                                    <th class="rounded-start">Kategori</th>
+                                    <th>Nama</th>
+                                    <th>Deskripsi</th>
+                                    <th>Harga/Kg</th>
+                                    <th class="rounded-end">Aksi</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                @foreach ($jenis as $item)
+                                    <tr>
+                                        <td>{{ $item->kategori->nama }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->deskripsi }}</td>
+                                        <td>Rp {{ number_format($item->harga_per_kg, 0, ',', '.') }}</td>
+                                        <td>
+                                            <a href="{{ route('jenis-sampah.edit', $item) }}"
+                                                class="btn btn-sm btn-warning">Edit</a>
+                                            <form action="{{ route('jenis-sampah.destroy', $item) }}" method="POST"
+                                                style="display:inline;">
+                                                @csrf @method('DELETE')
+                                                <button class="btn btn-sm btn-danger">Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

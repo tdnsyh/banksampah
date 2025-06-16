@@ -9,16 +9,18 @@ use App\Models\KategoriSampah;
 
 class AdminJenisController extends Controller
 {
-     public function index()
+    public function index()
     {
+        $title = 'Jenis Sampah';
         $jenis = JenisSampah::with('kategori')->get();
-        return view('dashboard.admin.jenis.index', compact('jenis'));
+        return view('dashboard.admin.jenis.index', compact('jenis', 'title'));
     }
 
     public function create()
     {
+        $title = 'Tambah Jenis Sampah';
         $kategori = KategoriSampah::all();
-        return view('dashboard.admin.jenis.create', compact('kategori'));
+        return view('dashboard.admin.jenis.create', compact('kategori','title'));
     }
 
     public function store(Request $request)
@@ -36,8 +38,9 @@ class AdminJenisController extends Controller
 
     public function edit(JenisSampah $jenis_sampah)
     {
+        $title = 'Edit Jenis Sampah';
         $kategori = KategoriSampah::all();
-        return view('dashboard.admin.jenis.edit', compact('jenis_sampah', 'kategori'));
+        return view('dashboard.admin.jenis.edit', compact('jenis_sampah', 'kategori', 'title'));
     }
 
     public function update(Request $request, JenisSampah $jenis_sampah)

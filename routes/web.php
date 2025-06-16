@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\Admin\AdminJenisController;
 use App\Http\Controllers\Dashboard\Admin\AdminKategoriController;
+use App\Http\Controllers\Dashboard\Admin\AdminLaporanController;
 use App\Http\Controllers\Dashboard\Admin\AdminNasabahController;
+use App\Http\Controllers\Dashboard\Admin\AdminProfilController;
+use App\Http\Controllers\Dashboard\Admin\AdminTransaksiController;
 use App\Http\Middleware\RoleMiddleware;
 
 Route::get('/', function () {
@@ -26,6 +29,18 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     Route::resource('/nasabah', AdminNasabahController::class);
     Route::resource('/kategori-sampah', AdminKategoriController::class);
     Route::resource('/jenis-sampah', AdminJenisController::class);
+
+    Route::prefix('/profil')->name('admin.profil.')->group(function () {
+        Route::post('/update', [AdminProfilController::class, 'profilUpdate'])->name('update');
+        Route::get('/', [AdminProfilController::class, 'profilIndex'])->name('index');
+    });
+
+    Route::prefix('/transaksi')->name('admin.transaksi.')->group(function () {
+        Route::get('/', [AdminTransaksiController::class, 'transaksiIndex'])->name('index');
+        Route::get('/riwayat', [AdminTransaksiController::class, 'transaksiHistori'])->name('histori');
+    });
+
+    Route::get('/laporan', [AdminLaporanController::class, 'laporanIndex'])->name('admin.laporan.index');
 
 });
 

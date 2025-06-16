@@ -10,13 +10,15 @@ class AdminKategoriController extends Controller
 {
     public function index()
     {
+        $title = 'Kategori Sampah';
         $kategori = KategoriSampah::all();
-        return view('dashboard.admin.kategori.index', compact('kategori'));
+        return view('dashboard.admin.kategori.index', compact('kategori', 'title'));
     }
 
     public function create()
     {
-        return view('dashboard.admin.kategori.create');
+        $title = 'Tambah Kategori Sampah';
+        return view('dashboard.admin.kategori.create', compact('title'));
     }
 
     public function store(Request $request)
@@ -32,7 +34,8 @@ class AdminKategoriController extends Controller
 
     public function edit(KategoriSampah $kategori_sampah)
     {
-        return view('dashboard.admin.kategori.edit', compact('kategori_sampah'));
+        $title = 'Edit Kategori Sampah';
+        return view('dashboard.admin.kategori.edit', compact('kategori_sampah', 'title'));
     }
 
     public function update(Request $request, KategoriSampah $kategori_sampah)
