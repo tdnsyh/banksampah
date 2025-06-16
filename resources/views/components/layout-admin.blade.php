@@ -36,6 +36,18 @@
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
+
+                        <!-- Data Master -->
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Transaksi</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/transaksi" aria-expanded="false">
+                                <span><i class="ti ti-transfer-in"></i></span>
+                                <span class="hide-menu">Transaksi baru</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/riwayat-transaksi" aria-expanded="false">
                                 <span><i class="ti ti-history"></i></span>
@@ -52,6 +64,12 @@
                             <a class="sidebar-link" href="/nasabah" aria-expanded="false">
                                 <span><i class="ti ti-users"></i></span>
                                 <span class="hide-menu">Nasabah</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/kategori-sampah" aria-expanded="false">
+                                <span><i class="ti ti-trash"></i></span>
+                                <span class="hide-menu">Kategori Sampah</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -151,11 +169,19 @@
 
 
                 {{-- footer --}}
-                <div class="py-6 px-6 text-center">
-                    <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
-                            class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a
-                            href="https://themewagon.com">ThemeWagon</a></p>
-                </div>
+                <footer>
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p>2025 &copy; Codemalaya</p>
+                        </div>
+                        <div class="float-end">
+                            <p>Crafted with <span class="text-danger">
+                                    <i class="bi bi-heart-fill icon-mid"></i></span>
+                                by <a href="#" class="text-decoration-none">Rsf</a>
+                            </p>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
     </div>
@@ -163,9 +189,7 @@
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 </body>
 
 </html>
