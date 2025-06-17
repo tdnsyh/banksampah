@@ -9,6 +9,7 @@ class NasabahDashboardController extends Controller
 {
     public function index()
     {
+
         return view('dashboard.nasabah.index');
     }
 }

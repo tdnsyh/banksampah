@@ -43,7 +43,7 @@
                             <span class="hide-menu">Transaksi</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/nasabah/riwayat-saldo" aria-expanded="false">
+                            <a class="sidebar-link" href="/transaksi/riwayat-dan-saldo" aria-expanded="false">
                                 <span><i class="ti ti-wallet"></i></span>
                                 <span class="hide-menu">Riwayat & Saldo</span>
                             </a>
@@ -55,13 +55,13 @@
                             <span class="hide-menu">Informasi</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/nasabah/harga" aria-expanded="false">
+                            <a class="sidebar-link" href="/informasi/harga" aria-expanded="false">
                                 <span><i class="ti ti-tag"></i></span>
                                 <span class="hide-menu">Harga</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/nasabah/pengumuman" aria-expanded="false">
+                            <a class="sidebar-link" href="/informasi/pengumuman" aria-expanded="false">
                                 <span><i class="ti ti-bell"></i></span>
                                 <span class="hide-menu">Pengumuman</span>
                             </a>

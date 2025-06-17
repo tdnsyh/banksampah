@@ -31,7 +31,7 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard" aria-expanded="false">
+                            <a class="sidebar-link" href="/admin" aria-expanded="false">
                                 <span><i class="ti ti-layout-dashboard"></i></span>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
@@ -43,7 +43,7 @@
                             <span class="hide-menu">Transaksi</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/transaksi" aria-expanded="false">
+                            <a class="sidebar-link" href="/transaksi/baru" aria-expanded="false">
                                 <span><i class="ti ti-transfer-in"></i></span>
                                 <span class="hide-menu">Transaksi baru</span>
                             </a>
@@ -61,19 +61,19 @@
                             <span class="hide-menu">Data Master</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/nasabah" aria-expanded="false">
+                            <a class="sidebar-link" href="/data/nasabah" aria-expanded="false">
                                 <span><i class="ti ti-users"></i></span>
                                 <span class="hide-menu">Nasabah</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/kategori-sampah" aria-expanded="false">
+                            <a class="sidebar-link" href="/data/kategori-sampah" aria-expanded="false">
                                 <span><i class="ti ti-category"></i></span>
                                 <span class="hide-menu">Kategori Sampah</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/jenis-sampah" aria-expanded="false">
+                            <a class="sidebar-link" href="/data/jenis-sampah" aria-expanded="false">
                                 <span><i class="ti ti-trash"></i></span>
                                 <span class="hide-menu">Jenis Sampah</span>
                             </a>
@@ -91,13 +91,30 @@
                             </a>
                         </li>
 
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Informasi</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/informasi/artikel" aria-expanded="false">
+                                <span><i class="ti ti-news"></i></span>
+                                <span class="hide-menu">Artikel</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/informasi/pengumuman-data" aria-expanded="false">
+                                <span><i class="ti ti-speakerphone"></i></span>
+                                <span class="hide-menu">Pengumuman</span>
+                            </a>
+                        </li>
+
                         <!-- Akun -->
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Akun</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/profil" aria-expanded="false">
+                            <a class="sidebar-link" href="/admin/profil" aria-expanded="false">
                                 <span><i class="ti ti-user"></i></span>
                                 <span class="hide-menu">Profil</span>
                             </a>

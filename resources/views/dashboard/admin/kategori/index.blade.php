@@ -15,10 +15,10 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <th>Nama</th>
+                                <tr class="table-dark border-0">
+                                    <th class="rounded-start">Nama</th>
                                     <th>Deskripsi</th>
-                                    <th>Aksi</th>
+                                    <th class="rounded-end">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

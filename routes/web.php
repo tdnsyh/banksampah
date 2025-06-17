@@ -4,12 +4,16 @@ use App\Http\Controllers\Dashboard\Admin\AdminDashboardController;
 use App\Http\Controllers\Dashboard\Nasabah\NasabahDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\Admin\AdminInformasiController;
 use App\Http\Controllers\Dashboard\Admin\AdminJenisController;
 use App\Http\Controllers\Dashboard\Admin\AdminKategoriController;
 use App\Http\Controllers\Dashboard\Admin\AdminLaporanController;
 use App\Http\Controllers\Dashboard\Admin\AdminNasabahController;
 use App\Http\Controllers\Dashboard\Admin\AdminProfilController;
 use App\Http\Controllers\Dashboard\Admin\AdminTransaksiController;
+use App\Http\Controllers\Dashboard\Nasabah\NasabahInformasiController;
+use App\Http\Controllers\Dashboard\Nasabah\NasabahProfilController;
+use App\Http\Controllers\Dashboard\Nasabah\NasabahTransaksiController;
 use App\Http\Middleware\RoleMiddleware;
 
 Route::get('/', function () {
@@ -25,26 +29,36 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
-    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard.index');
-    Route::resource('/nasabah', AdminNasabahController::class);
-    Route::resource('/kategori-sampah', AdminKategoriController::class);
-    Route::resource('/jenis-sampah', AdminJenisController::class);
+    Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard.index');
 
-    Route::prefix('/profil')->name('admin.profil.')->group(function () {
+    Route::resource('/data/nasabah', AdminNasabahController::class);
+    Route::resource('/data/kategori-sampah', AdminKategoriController::class);
+    Route::resource('/data/jenis-sampah', AdminJenisController::class);
+
+    Route::prefix('/admin/profil')->name('admin.profil.')->group(function () {
         Route::post('/update', [AdminProfilController::class, 'profilUpdate'])->name('update');
         Route::get('/', [AdminProfilController::class, 'profilIndex'])->name('index');
     });
 
     Route::prefix('/transaksi')->name('admin.transaksi.')->group(function () {
-        Route::get('/', [AdminTransaksiController::class, 'transaksiIndex'])->name('index');
+        Route::get('/baru', [AdminTransaksiController::class, 'transaksiIndex'])->name('index');
         Route::get('/riwayat', [AdminTransaksiController::class, 'transaksiHistori'])->name('histori');
     });
 
     Route::get('/laporan', [AdminLaporanController::class, 'laporanIndex'])->name('admin.laporan.index');
+    Route::get('/informasi/artikel', [AdminInformasiController::class, 'artikelIndex'])->name('admin.artikel.index');
+    Route::get('/informasi/pengumuman-data', [AdminInformasiController::class, 'pengumumanIndex'])->name('admin.pengumuman.index');
 
 });
 
-Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
+Route::middleware(['auth', RoleMiddleware::class . ':nasabah'])->group(function () {
     Route::get('/nasabah/dashboard', [NasabahDashboardController::class, 'index'])->name('nasabah.dashboard.index');
+    Route::get('/transaksi/riwayat-dan-saldo', [NasabahTransaksiController::class, 'riwayatIndex'])->name('nasabah.riwayat.index');
+    Route::get('/informasi/harga', [NasabahInformasiController::class, 'hargaIndex'])->name('nasabah.harga.index');
+    Route::get('/informasi/pengumuman', [NasabahInformasiController::class, 'pengumumanIndex'])->name('nasabah.pengumuman.index');
 
+    Route::prefix('/nasabah/profil')->name('nasabah.profil.')->group(function () {
+        Route::post('/update', [NasabahProfilController::class, 'profilUpdate'])->name('update');
+        Route::get('/', [NasabahProfilController::class, 'profilIndex'])->name('index');
+    });
 });

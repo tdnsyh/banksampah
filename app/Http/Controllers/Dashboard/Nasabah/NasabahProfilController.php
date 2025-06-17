@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Admin;
+namespace App\Http\Controllers\Dashboard\Nasabah;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
-class AdminProfilController extends Controller
+class NasabahProfilController extends Controller
 {
     public function profilIndex()
     {
         $title = 'Profil';
         $user = Auth::user();
-        return view('dashboard.admin.profil.index', compact('title', 'user'));
+        return view('dashboard.nasabah.profil.index', compact('title', 'user'));
     }
 
     public function profilUpdate(Request $request)
