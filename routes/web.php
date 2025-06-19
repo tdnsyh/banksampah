@@ -47,6 +47,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 
     Route::get('/laporan', [AdminLaporanController::class, 'laporanIndex'])->name('admin.laporan.index');
     Route::get('/informasi/artikel', [AdminInformasiController::class, 'artikelIndex'])->name('admin.artikel.index');
+    Route::get('/informasi/artikel/tambah', [AdminInformasiController::class, 'artikelTambah'])->name('admin.artikel.tambah');
     Route::get('/informasi/pengumuman-data', [AdminInformasiController::class, 'pengumumanIndex'])->name('admin.pengumuman.index');
 
 });
