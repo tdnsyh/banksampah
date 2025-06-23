@@ -55,6 +55,23 @@
                             </a>
                         </li>
 
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Penukaran</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/penukaran/baru" aria-expanded="false">
+                                <span><i class="ti ti-transfer-in"></i></span>
+                                <span class="hide-menu">Penukaran Baru</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/penukaran/riwayat" aria-expanded="false">
+                                <span><i class="ti ti-history"></i></span>
+                                <span class="hide-menu">Riwayat Penukaran</span>
+                            </a>
+                        </li>
+
                         <!-- Data Master -->
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
