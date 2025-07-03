@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Admin\AdminJenisController;
 use App\Http\Controllers\Dashboard\Admin\AdminKategoriController;
 use App\Http\Controllers\Dashboard\Admin\AdminLaporanController;
 use App\Http\Controllers\Dashboard\Admin\AdminNasabahController;
+use App\Http\Controllers\Dashboard\Admin\AdminPenukaranController;
 use App\Http\Controllers\Dashboard\Admin\AdminProfilController;
 use App\Http\Controllers\Dashboard\Admin\AdminTransaksiController;
 use App\Http\Controllers\Dashboard\Nasabah\NasabahInformasiController;
@@ -40,9 +41,16 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
         Route::get('/', [AdminProfilController::class, 'profilIndex'])->name('index');
     });
 
+
     Route::prefix('/transaksi')->name('admin.transaksi.')->group(function () {
         Route::get('/baru', [AdminTransaksiController::class, 'transaksiIndex'])->name('index');
         Route::get('/riwayat', [AdminTransaksiController::class, 'transaksiHistori'])->name('histori');
+        Route::post('/simpan', [AdminTransaksiController::class, 'store'])->name('store');
+    });
+
+    Route::prefix('/penukaran')->name('admin.penukaran.')->group(function () {
+        Route::get('/baru', [AdminPenukaranController::class, 'penukaranIndex'])->name('index');
+        Route::get('/riwayat', [AdminPenukaranController::class, 'penukaranHistori'])->name('histori');
     });
 
     Route::get('/laporan', [AdminLaporanController::class, 'laporanIndex'])->name('admin.laporan.index');
