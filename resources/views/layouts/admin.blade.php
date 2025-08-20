@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize Free</title>
+    <title>@yield('title', 'Default') - Banksampah</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
+    @stack('style')
 </head>
 
 <body>
@@ -31,38 +32,96 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/nasabah/dashboard" aria-expanded="false">
+                            <a class="sidebar-link" href="/admin" aria-expanded="false">
                                 <span><i class="ti ti-layout-dashboard"></i></span>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
 
-                        <!-- Transaksi -->
+                        <!-- Data Master -->
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Transaksi</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/transaksi/riwayat-dan-saldo" aria-expanded="false">
-                                <span><i class="ti ti-wallet"></i></span>
-                                <span class="hide-menu">Riwayat & Saldo</span>
+                            <a class="sidebar-link" href="/transaksi/baru" aria-expanded="false">
+                                <span><i class="ti ti-transfer-in"></i></span>
+                                <span class="hide-menu">Transaksi baru</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/transaksi/riwayat" aria-expanded="false">
+                                <span><i class="ti ti-history"></i></span>
+                                <span class="hide-menu">Riwayat Transaksi</span>
                             </a>
                         </li>
 
-                        <!-- Informasi -->
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Penukaran</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/penukaran/baru" aria-expanded="false">
+                                <span><i class="ti ti-transfer-in"></i></span>
+                                <span class="hide-menu">Penukaran Baru</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/penukaran/riwayat" aria-expanded="false">
+                                <span><i class="ti ti-history"></i></span>
+                                <span class="hide-menu">Riwayat Penukaran</span>
+                            </a>
+                        </li>
+
+                        <!-- Data Master -->
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Data Master</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/data/nasabah" aria-expanded="false">
+                                <span><i class="ti ti-users"></i></span>
+                                <span class="hide-menu">Nasabah</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/data/kategori-sampah" aria-expanded="false">
+                                <span><i class="ti ti-category"></i></span>
+                                <span class="hide-menu">Kategori Sampah</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/data/jenis-sampah" aria-expanded="false">
+                                <span><i class="ti ti-trash"></i></span>
+                                <span class="hide-menu">Jenis Sampah</span>
+                            </a>
+                        </li>
+
+                        <!-- Laporan -->
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Laporan</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/laporan" aria-expanded="false">
+                                <span><i class="ti ti-file-text"></i></span>
+                                <span class="hide-menu">Laporan</span>
+                            </a>
+                        </li>
+
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Informasi</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/informasi/harga" aria-expanded="false">
-                                <span><i class="ti ti-tag"></i></span>
-                                <span class="hide-menu">Harga</span>
+                            <a class="sidebar-link" href="/informasi/artikel" aria-expanded="false">
+                                <span><i class="ti ti-news"></i></span>
+                                <span class="hide-menu">Artikel</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/informasi/pengumuman" aria-expanded="false">
-                                <span><i class="ti ti-bell"></i></span>
+                            <a class="sidebar-link" href="/informasi/pengumuman-data" aria-expanded="false">
+                                <span><i class="ti ti-speakerphone"></i></span>
                                 <span class="hide-menu">Pengumuman</span>
                             </a>
                         </li>
@@ -73,7 +132,7 @@
                             <span class="hide-menu">Akun</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/nasabah/profil" aria-expanded="false">
+                            <a class="sidebar-link" href="/admin/profil" aria-expanded="false">
                                 <span><i class="ti ti-user"></i></span>
                                 <span class="hide-menu">Profil</span>
                             </a>
@@ -140,16 +199,33 @@
 
                 {{-- isi konten --}}
                 <div class="isi">
-                    {{ $slot }}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="page-titles">
+                                <h2 class="mb-0 fw-bolder fs-8">@yield('title', 'Default')</h2>
+                            </div>
+                            <div class="mt-3 mt-md-4">
+                                @yield('content')
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
                 {{-- footer --}}
-                <div class="py-6 px-6 text-center">
-                    <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
-                            class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a
-                            href="https://themewagon.com">ThemeWagon</a></p>
-                </div>
+                <footer>
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p>2025 &copy; Codemalaya</p>
+                        </div>
+                        <div class="float-end">
+                            <p>Crafted with <span class="text-danger">
+                                    <i class="bi bi-heart-fill icon-mid"></i></span>
+                                by <a href="#" class="text-decoration-none">Rsf</a>
+                            </p>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
     </div>
@@ -157,9 +233,8 @@
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    @stack('script')
 </body>
 
 </html>
