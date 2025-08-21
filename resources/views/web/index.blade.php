@@ -57,7 +57,7 @@
 
     <section id="profil" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Profil Bank Sampah Sariwangi</h2>
+            <h2 class="text-center mb-5 fw-bold">Profil Bank Sampah</h2>
             <div class="row mb-5">
                 <div class="col-md-6">
                     <div class="card border">
