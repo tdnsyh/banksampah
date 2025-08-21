@@ -13,7 +13,7 @@ class AdminNasabahController extends Controller
     public function index()
     {
         $title = 'Data Nasabah';
-        $users = User::where('id', '!=', Auth::id())->get();
+        $users = User::with('nasabah')->where('id', '!=', Auth::id())->get();
         return view('dashboard.admin.nasabah.index', compact('users', 'title'));
     }
 

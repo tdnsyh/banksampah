@@ -14,19 +14,22 @@
                     <tr>
                         <th class="rounded-start">Nama</th>
                         <th>Email</th>
+                        <th>Berat</th>
+                        <th>Saldo</th>
                         <th class="rounded-end">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $nasabah)
+                    @foreach ($users as $n)
                         <tr>
-                            <td>{{ $nasabah->name }}</td>
-                            <td>{{ $nasabah->email }}</td>
+                            <td>{{ $n->name }}</td>
+                            <td>{{ $n->email }}</td>
+                            <td>{{ $n->nasabah->total_berat ?? '0' }} Kg</td>
+                            <td>Rp. {{ $n->nasabah->total_harga ?? '0' }}</td>
                             <td>
                                 <a href="/dashboard" class="btn btn-sm btn-info">Detail</a>
-                                <a href="{{ route('nasabah.edit', $nasabah) }}" class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('nasabah.destroy', $nasabah) }}" method="POST"
-                                    style="display:inline">
+                                <a href="{{ route('nasabah.edit', $n) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <form action="{{ route('nasabah.destroy', $n) }}" method="POST" style="display:inline">
                                     @csrf @method('DELETE')
                                     <button class="btn btn-sm btn-danger">Hapus</button>
                                 </form>

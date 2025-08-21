@@ -4,68 +4,85 @@ namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Artikel;
-use App\Models\pengumuman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AdminInformasiController extends Controller
 {
-    public function artikelIndex()
+    public function index()
     {
-        $artikel = Artikel::all();
-        return view('dashboard.admin.artikel.index', compact('artikel'));
+        $artikels = Artikel::latest()->paginate(10);
+        return view('dashboard.admin.artikel.index', compact('artikels'));
     }
 
-    public function artikelTambah()
+    public function create()
     {
-        $title = 'Tambah Artikel';
-
-        return view('dashboard.admin.artikel.create', compact('title'));
+        return view('dashboard.admin.artikel.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
+            'kategori' => 'required|string|max:255',
             'judul' => 'required|string|max:255',
             'isi' => 'required',
             'penulis' => 'required|string|max:255',
-            'kategori' => 'required|string|max:255',
+            'gambar' => 'nullable|image|mimes:jpg,png,jpeg,gif,webp|max:2048',
         ]);
 
-        $artikel = new Artikel();
-        $artikel->judul = $request->judul;
-        $artikel->isi = $request->isi;
-        $artikel->penulis = $request->penulis;
-        $artikel->kategori = $request->kategori;
+        $validated['slug'] = Str::slug($validated['judul']);
 
-        $artikel->save();
-        return redirect()->route('admin.artikel.index')->with('success', 'Berita berhasil dibuat!');
+        if ($request->hasFile('gambar')) {
+            $validated['gambar'] = $request->file('gambar')->store('artikel', 'public');
+        }
+
+        Artikel::create($validated);
+
+        return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil dibuat!');
     }
 
-    public function pengumumanIndex()
+    public function show(Artikel $artikel)
     {
-        $pengumuman = 'Tambah Pengumuman';
-        return view('dashboard.admin.pengumuman.index', compact('pengumuman'));
+        return view('dashboard.admin.artikel.show', compact('artikel'));
     }
 
-    public function pengumumanTambah()
+    public function edit(Artikel $artikel)
     {
-        $title = 'Tambah Artikel';
-
-        return view('dashboard.admin.pengumuman.create', compact('title'));
+        return view('dashboard.admin.artikel.edit', compact('artikel'));
     }
 
-    public function pengumumanStore(Request $request)
+    public function update(Request $request, Artikel $artikel)
     {
-        $request->validate([
+        $validated = $request->validate([
+            'kategori' => 'required|string|max:255',
             'judul' => 'required|string|max:255',
             'isi' => 'required',
+            'penulis' => 'required|string|max:255',
+            'gambar' => 'nullable|image|mimes:jpg,png,jpeg,gif,webp|max:2048',
         ]);
 
-        $pengumuman = new pengumuman();
-        $pengumuman->judul = $request->judul;
-        $pengumuman->isi = $request->isi;;
+        $validated['slug'] = Str::slug($validated['judul']);
 
-        $pengumuman->save();
-        return redirect()->route('admin.pengumuman.index')->with('success', 'Berita berhasil dibuat!');
+        if ($request->hasFile('gambar')) {
+            if ($artikel->gambar) {
+                \Storage::disk('public')->delete($artikel->gambar);
+            }
+            $validated['gambar'] = $request->file('gambar')->store('artikel', 'public');
+        }
+
+        $artikel->update($validated);
+
+        return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil diperbarui!');
+    }
+
+    public function destroy(Artikel $artikel)
+    {
+        if ($artikel->gambar) {
+            \Storage::disk('public')->delete($artikel->gambar);
+        }
+
+        $artikel->delete();
+
+        return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil dihapus!');
     }
 }

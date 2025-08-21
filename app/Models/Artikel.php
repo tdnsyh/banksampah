@@ -15,6 +15,8 @@ class Artikel extends Model
         'kategori',
         'judul',
         'isi',
-        'penulis'
+        'penulis',
+        'slug',
+        'gambar'
     ];
 }

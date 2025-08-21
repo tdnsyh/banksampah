@@ -114,15 +114,9 @@
                             <span class="hide-menu">Informasi</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/informasi/artikel" aria-expanded="false">
+                            <a class="sidebar-link" href="/admin/artikel" aria-expanded="false">
                                 <span><i class="ti ti-news"></i></span>
                                 <span class="hide-menu">Artikel</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/informasi/pengumuman-data" aria-expanded="false">
-                                <span><i class="ti ti-speakerphone"></i></span>
-                                <span class="hide-menu">Pengumuman</span>
                             </a>
                         </li>
 

@@ -15,11 +15,11 @@ use App\Http\Controllers\Dashboard\Admin\AdminTransaksiController;
 use App\Http\Controllers\Dashboard\Nasabah\NasabahInformasiController;
 use App\Http\Controllers\Dashboard\Nasabah\NasabahProfilController;
 use App\Http\Controllers\Dashboard\Nasabah\NasabahTransaksiController;
+use App\Http\Controllers\PublicController;
 use App\Http\Middleware\RoleMiddleware;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PublicController::class, 'index']);
+Route::get('/show', [PublicController::class, 'show'])->name('artikel.show');
 
 // auth route
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -54,9 +54,11 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     });
 
     Route::get('/laporan', [AdminLaporanController::class, 'laporanIndex'])->name('admin.laporan.index');
-    Route::get('/informasi/artikel', [AdminInformasiController::class, 'artikelIndex'])->name('admin.artikel.index');
-    Route::get('/informasi/artikel/tambah', [AdminInformasiController::class, 'artikelTambah'])->name('admin.artikel.tambah');
-    Route::post('/informasi/artikel/simpan', [AdminInformasiController::class, 'store'])->name('admin.artikel.simpan');
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('artikel', AdminInformasiController::class);
+    });
+
     Route::get('/informasi/pengumuman/tambah', [AdminInformasiController::class, 'pengumumanTambah'])->name('admin.pengumuman.tambah');
     Route::post('/informasi/pengumuman/simpan', [AdminInformasiController::class, 'pengumumanStore'])->name('admin.pengumuman.simpan');
     Route::get('/informasi/pengumuman-data', [AdminInformasiController::class, 'pengumumanIndex'])->name('admin.pengumuman.index');

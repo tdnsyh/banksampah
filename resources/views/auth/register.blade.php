@@ -1,5 +1,6 @@
-<x-layout>
-    <x-slot:title>{{ $title ?? 'Belum ada title' }}</x-slot:title>
+@extends('layouts.public')
+
+@section('content')
     <div class="d-flex min-vh-100 justify-content-center align-items-center">
         <div class="col-md-6 col-lg-4">
             <div class="card shadow-none border">
@@ -50,4 +51,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+@endsection

@@ -61,12 +61,6 @@
                                 <span class="hide-menu">Harga</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/informasi/pengumuman" aria-expanded="false">
-                                <span><i class="ti ti-bell"></i></span>
-                                <span class="hide-menu">Pengumuman</span>
-                            </a>
-                        </li>
 
                         <!-- Akun -->
                         <li class="nav-small-cap">

@@ -35,6 +35,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function nasabah()
+    {
+        return $this->hasOne(TransaksiSetor::class, 'nasabah_id');
+    }
+
     /**
      * Get the attributes that should be cast.
      *
