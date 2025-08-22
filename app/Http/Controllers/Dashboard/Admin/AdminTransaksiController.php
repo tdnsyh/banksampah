@@ -8,6 +8,7 @@ use App\Models\TransaksiSetor;
 use App\Models\TransaksiSetorDetail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JenisSampah;
+use App\Models\SaldoNasabah;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
@@ -70,8 +71,14 @@ class AdminTransaksiController extends Controller
                 $transaksi->details()->create($detail);
             }
 
+            $saldo = SaldoNasabah::firstOrCreate(
+                ['nasabah_id' => $request->nasabah_id],
+                ['saldo' => 0]
+            );
+            $saldo->tambahSaldo($totalHarga);
+
             DB::commit();
-            return redirect()->route('transaksi.index')->with('success', 'Setoran berhasil disimpan.');
+            return redirect()->route('transaksi.index')->with('success', 'Setoran berhasil disimpan dan saldo diperbarui.');
         } catch (\Exception $e) {
             DB::rollback();
             return back()->withErrors('Gagal menyimpan setoran: ' . $e->getMessage());

@@ -50,6 +50,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 
     Route::prefix('/penukaran')->name('admin.penukaran.')->group(function () {
         Route::get('/baru', [AdminPenukaranController::class, 'penukaranIndex'])->name('index');
+        Route::post('/store', [AdminPenukaranController::class, 'storePenukaran'])->name('store');
         Route::get('/riwayat', [AdminPenukaranController::class, 'penukaranHistori'])->name('histori');
     });
 

@@ -35,9 +35,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function nasabah()
+    public function saldo()
     {
-        return $this->hasOne(TransaksiSetor::class, 'nasabah_id');
+        return $this->hasOne(SaldoNasabah::class, 'nasabah_id');
     }
 
     /**

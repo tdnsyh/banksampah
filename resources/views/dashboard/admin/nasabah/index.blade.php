@@ -14,7 +14,6 @@
                     <tr>
                         <th class="rounded-start">Nama</th>
                         <th>Email</th>
-                        <th>Berat</th>
                         <th>Saldo</th>
                         <th class="rounded-end">Aksi</th>
                     </tr>
@@ -24,8 +23,7 @@
                         <tr>
                             <td>{{ $n->name }}</td>
                             <td>{{ $n->email }}</td>
-                            <td>{{ $n->nasabah->total_berat ?? '0' }} Kg</td>
-                            <td>Rp. {{ $n->nasabah->total_harga ?? '0' }}</td>
+                            <td>Rp. {{ $n->saldo->saldo ?? '0' }}</td>
                             <td>
                                 <a href="/dashboard" class="btn btn-sm btn-info">Detail</a>
                                 <a href="{{ route('nasabah.edit', $n) }}" class="btn btn-sm btn-warning">Edit</a>

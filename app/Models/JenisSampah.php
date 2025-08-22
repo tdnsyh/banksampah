@@ -22,4 +22,9 @@ class JenisSampah extends Model
     {
         return $this->belongsTo(KategoriSampah::class, 'kategori_sampah_id');
     }
+
+    public function transaksiDetails()
+{
+    return $this->hasMany(TransaksiSetorDetail::class, 'jenis_sampah_id');
+}
 }

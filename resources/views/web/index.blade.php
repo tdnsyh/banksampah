@@ -30,7 +30,7 @@
     </nav>
 
     <section class="bg-success text-white d-flex align-items-center"
-        style="background: url('https://images.unsplash.com/photo-1562077981-4d7eafd44932?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat; min-height: 100vh;">
+        style="background: url('https://cdn.rri.co.id/berita/21/images/1676971290265-Bank_Sampah/1676971290265-Bank_Sampah.jpg') center/cover no-repeat; min-height: 100vh;">
         <div class="container text-center">
             <h1 class="display-4 fw-bold">Selamat Datang di Bank Sampah Sariwangi</h1>
             <p class="lead mb-4">Mari bersama-sama menjaga lingkungan dengan mengelola sampah secara bertanggung jawab dan

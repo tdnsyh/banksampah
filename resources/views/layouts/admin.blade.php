@@ -210,12 +210,12 @@
                 <footer>
                     <div class="footer clearfix mb-0 text-muted">
                         <div class="float-start">
-                            <p>2025 &copy; Codemalaya</p>
+                            <p>2025 &copy; Desa Sariwangi</p>
                         </div>
                         <div class="float-end">
                             <p>Crafted with <span class="text-danger">
                                     <i class="bi bi-heart-fill icon-mid"></i></span>
-                                by <a href="#" class="text-decoration-none">Rsf</a>
+                                by <a href="https://codemalaya.vercel.app" class="text-decoration-none">Rsf</a>
                             </p>
                         </div>
                     </div>
